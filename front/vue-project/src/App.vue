@@ -5,16 +5,6 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <header>
     <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/dashboard">Dashboard</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/historique">Historique</RouterLink>
-        <RouterLink to="/gamepass">Gamepass</RouterLink>
-        <RouterLink to="/login">Login</RouterLink>
-        <RouterLink to="/register">Register</RouterLink>
-        <RouterLink to="/profile">Profile</RouterLink>
-      </nav>
     </div>
   </header>
 

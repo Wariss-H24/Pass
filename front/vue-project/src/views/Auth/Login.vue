@@ -6,7 +6,7 @@
 
 <template>
   <div
-    class="bg-background-light dark:bg-background-dark font-display antialiased min-h-screen flex flex-col items-center justify-center p-4"
+    class="bg-background-light dark:bg-background-dark font-display antialiased min-h-screen flex flex-col items-center justify-center p-4 auth-page"
   >
     <!-- Main Container -->
     <div class="w-full max-w-[480px] flex flex-col gap-6">

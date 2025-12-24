@@ -30,7 +30,6 @@ export default defineConfig({
       fontFamily: {
         display: ["Lexend", "sans-serif", "Spline Sans"],
         body: ["Noto Sans", "sans-serif"],
-         display: ["Lexend", "sans-serif"],
       },
       borderRadius: {
         DEFAULT: "0.25rem",

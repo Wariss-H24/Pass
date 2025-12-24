@@ -28,3 +28,34 @@
 .font-variation-settings-fill {
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
+
+/* Small UI helpers: safe padding, primary fallback, auth page background and button styles
+   These are lightweight fallbacks so CTAs and auth pages render even if theme tokens are missing. */
+.pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+
+/* Primary color fallback (gradient CTA) - will be used only if Tailwind/custom theme doesn't provide bg-primary */
+.bg-primary { background: linear-gradient(180deg,#1773ff,#0f5de0); color: #fff; }
+.text-primary { color: #1773ff; }
+.bg-primary:hover { filter: brightness(.98); }
+
+/* Button helper for consistent CTA look */
+.btn-primary { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.65rem 1rem; border-radius:.75rem; font-weight:700; }
+
+/* Dark-ish auth background for login/register pages */
+.auth-page { background: radial-gradient(circle at 50% 6%, rgba(23,115,255,0.03) 0%, rgba(0,0,0,0.02) 12%, transparent 30%), linear-gradient(180deg,#071226 0%, #051021 100%); }
+
+/* Ensure fixed bottom nav doesn't hide content in some pages */
+main, .main-content { box-sizing: border-box; }
+
+/* Lightweight form input fallback so Login/Register look polished even without extra theme vars */
+.form-input {
+  background: #fff;
+  color: #0f1724;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.6rem;
+  border: 1px solid #e6eef7;
+}
+.form-input:focus { outline: none; box-shadow: 0 6px 18px rgba(15,23,42,0.06); }
+
+
+
