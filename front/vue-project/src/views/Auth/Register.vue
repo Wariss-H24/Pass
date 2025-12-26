@@ -4,18 +4,10 @@
   >
     <!-- Top App Bar -->
     <div
-      class="flex items-center p-4 pb-2 justify-between sticky top-0 z-10 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md"
+      class="flex items-center p-4 pb-2 justify-between sticky top-0 z-10 bg-background-light/90 backdrop-blur-md"
     >
-      <button
-        class="text-slate-900 dark:text-white flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
-      >
-        <span class="material-symbols-outlined text-[24px]">
-          arrow_back
-        </span>
-      </button>
-
       <h2
-        class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12"
+        class="text-slate-900 text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12"
       >
         Password Master
       </h2>

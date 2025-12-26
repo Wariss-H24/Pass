@@ -23,7 +23,6 @@
             <div class="absolute inset-0 bg-primary/40 mix-blend-overlay"></div>
           </div>
         </div>
-
         <!-- Title -->
         <div class="text-center">
           <h1 class="text-[32px] font-bold tracking-tight text-slate-900 dark:text-white">
