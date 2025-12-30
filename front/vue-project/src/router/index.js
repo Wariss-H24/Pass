@@ -4,67 +4,55 @@ import Historique from '@/views/Historique.vue'
 import Gamepass from '@/views/Gamepass.vue'
 import Profile from '@/views/Profile/Profile.vue'
 import Dashboard from '@/views/Dashboard.vue'
+import { useAuthStore } from '@/stores/authStore'
+
+const routes = [
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/Auth/Login.vue')
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import('@/views/Auth/Register.vue')
+  },
+  {
+    path: '/',
+    name: 'acceuil',
+    component: () => import('@/views/Acceuil.vue')
+  },
+  {
+    path: '/app',
+    name: 'home',
+    component: HomeView,
+    meta: { requiresAuth: true },
+    children: [
+      { path: 'dashboard', name: 'dashboard', component: Dashboard },
+      { path: 'profile', name: 'profile', component: Profile },
+      { path: 'historique', name: 'historique', component: Historique },
+      { path: 'gamepass', name: 'gamepass', component: Gamepass },
+      { path: 'faq', name: 'faq', component: () => import('@/views/Faq.vue') },
+      { path: 'about', name: 'about', component: () => import('../views/AboutView.vue') },
+    ]
+  }
+]
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-    path : '/login',
-    name : 'login',
-    component : () => import('@/views/Auth/Login.vue')
-    },
-    {
-    path : '/register',
-    name : 'register',
-    component : () => import('@/views/Auth/Register.vue')
-    },
-    {
-     path : '/',
-    name : 'acceuil',
-    component : () => import('@/views/Acceuil.vue')
-    },
-    {
-      path: '/app',
-      name: 'home',
-      component: HomeView,
-      children: [
-    {
-      path : '/dashboard',
-      name : 'dashboard',
-      component : Dashboard
-    },
-    {
-      path : '/profile',
-      name : 'profile',
-      component : Profile
-    },
-    {
-      path : '/historique',
-      name : 'historique',
-      component : Historique
-    },
-    {
-      path : '/gamepass',
-      name : 'gamepass',
-      component : Gamepass
-    },
-    {
-      name : 'faq',
-      path : '/faq',
-      component : () => import('@/views/Faq.vue')
-    }
-    ,
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
-    },
-      ]
-    },
-  ],
+  history: createWebHistory(),
+  routes,
+})
+
+router.beforeEach((to) => {
+  const auth = useAuthStore()
+
+  if (to.meta.requiresAuth && !auth.isAuthenticated) {
+    return { name: 'login' }
+  }
+
+  if ((to.name === 'login' || to.name === 'register') && auth.isAuthenticated) {
+    return { name: 'dashboard' }
+}
 })
 
 export default router
