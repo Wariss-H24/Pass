@@ -1,6 +1,7 @@
 <?php
 namespace App\Actions\Auth;
-use App\Models\User
+
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 class LoginAction
@@ -11,17 +12,17 @@ class LoginAction
         if(!$user || !Hash::check($data['password'], $user->password)){
             throw ValidationException::withMessages([
                 'email' => ['Email ou mot de passe incorrect'],
-            ])
+            ]);
         }
 
         //Suprimer anciens tokens(opt mais propre)
-        $user->token()->delete()
+        $user->tokens()->delete()
 
         $token = $user->createToken('user_token')->plainTextToken;
 
         return [
             'user'=> $user,
             'token'=> $token,
-        ]
+        ];
      }
 }

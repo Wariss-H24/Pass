@@ -1,18 +1,18 @@
 <?php
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Contollers\Api\LoginController;
-use App\Http\Controller\Api\RegisterController;
-use App\Http\Contollers\Api\LogoutController;
+use App\Http\Controllers\Api\Auth\LoginController;
+use App\Http\Controllers\Api\Auth\RegisterController;
+use App\Http\Controllers\Api\Auth\LogoutController;
 
-Route::get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-})->middleware('auth:sanctum');
+});
 
-Route::post('/register', [RegisterController::class]);
-Route::post('/login', [LoginController::class]);
-
-// Route::middleware('auth:sanctum')->post('/logout', LogoutController::class);
+Route::post('/register', [RegisterController::class, '__invoke']);
+Route::post('/login', [LoginController::class, '__invoke']);
 
 
+Route::middleware('auth:sanctum')->post('/logout', [LogoutController::class, '__invoke']);
