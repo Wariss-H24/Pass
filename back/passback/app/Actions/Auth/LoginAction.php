@@ -16,7 +16,7 @@ class LoginAction
         }
 
         //Suprimer anciens tokens(opt mais propre)
-        $user->tokens()->delete()
+        $user->tokens()->delete();
 
         $token = $user->createToken('user_token')->plainTextToken;
 
